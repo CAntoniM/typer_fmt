@@ -112,10 +112,10 @@ mod test {
     // NOTE: Due to the fact that the follow resolvers are simple pass throughs
     // to other implmenteations we are not going to bother testing it unless
     // for some reason they turn out to be so buggy we really need to
-    // 
+    //
     // 1. env
     // 2. now
-    // 
+    //
 
     #[test]
     fn parse_statement() {
@@ -141,7 +141,7 @@ mod test {
             //Testing that the now resolve is correctly located and called.
             (
                 "Hello world ?now(%D)".to_string(),
-                format!("Hello world {}",chrono::Local::now().format("%D"))
+                format!("Hello world {}", chrono::Local::now().format("%D")),
             ),
         ];
         std::env::set_var("TEST", "TEST");
