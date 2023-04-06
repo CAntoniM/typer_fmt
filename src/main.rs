@@ -109,36 +109,36 @@ fn main() -> Result<(), String> {
 #[cfg(test)]
 mod test {
 
-    /// NOTE: Due to the fact that the follow resolvers are simple pass throughs
-    /// to other implmenteations we are not going to bother testing it unless
-    /// for some reason they turn out to be so buggy we really need to
-    /// 
-    /// 1. env
-    /// 2. now
-    /// 
+    // NOTE: Due to the fact that the follow resolvers are simple pass throughs
+    // to other implmenteations we are not going to bother testing it unless
+    // for some reason they turn out to be so buggy we really need to
+    // 
+    // 1. env
+    // 2. now
+    // 
 
     #[test]
     fn parse_statement() {
         let test_cases = [
-            ///Testing that the parse statement function does not modify text it not meant to
+            //Testing that the parse statement function does not modify text it not meant to
             ("Hello world!".to_string(), ("Hello world!".to_string())),
-            /// Testing that in cases where text matches the pattern but is not
-            /// meant to be resolved it is left as it was found
+            // Testing that in cases where text matches the pattern but is not
+            // meant to be resolved it is left as it was found
             (
                 "Hello world? (this could be a joke)".to_string(),
                 "Hello world? (this could be a joke)".to_string(),
             ),
-            ///Testing that when we want it to resolve a value it does so as expected
+            //Testing that when we want it to resolve a value it does so as expected
             (
                 "Hello world ?env(TEST)".to_string(),
                 "Hello world TEST".to_string(),
             ),
-            ///Testing that when it can not resolve a value it leaves it as it finds it
+            //Testing that when it can not resolve a value it leaves it as it finds it
             (
                 "Hello world ?env(UNDEFINED_TEST)".to_string(),
                 "Hello world ?env(UNDEFINED_TEST)".to_string(),
             ),
-            ///Testing that the now resolve is correctly located and called.
+            //Testing that the now resolve is correctly located and called.
             (
                 "Hello world ?now(%D)".to_string(),
                 format!("Hello world {}",chrono::Local::now().format("%D"))
