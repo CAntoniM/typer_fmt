@@ -128,6 +128,10 @@ mod test {
                 "Hello world? (this could be a joke)".to_string(),
                 "Hello world? (this could be a joke)".to_string(),
             ),
+            (
+                "Hello world! (this could be a joke)".to_string(),
+                "Hello world! (this could be a joke)".to_string(),
+            ),
             //Testing that when we want it to resolve a value it does so as expected
             (
                 "Hello world ?env(TEST)".to_string(),
